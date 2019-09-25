@@ -1,6 +1,6 @@
 package war;
 
 public interface War {
-    boolean play();
-    void set();
+    boolean playGame();
+    void setHands();
 }
