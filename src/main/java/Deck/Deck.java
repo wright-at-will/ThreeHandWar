@@ -9,7 +9,7 @@ public class Deck {
     private LinkedList<Card> deck = new LinkedList<Card>();
 
     public Deck(){
-    //Sets the entire deck
+    //Sets and randomizes the entire deck
        setDeck();
     }
 
@@ -22,13 +22,13 @@ public class Deck {
         ArrayList<Card> newDeck = new ArrayList<Card>();
         for(int i=2 ; i<14 ; i++){
             for(int j=0;j<4;j++){
-                newDeck.add(new Card(i, Suits.Club));
-                newDeck.add(new Card(i, Suits.Diamond));
-                newDeck.add(new Card(i, Suits.Heart));
-                newDeck.add(new Card(i, Suits.Spade));
+                newDeck.add(new Card(i, Suits.CLUBS));
+                newDeck.add(new Card(i, Suits.DIAMONDS));
+                newDeck.add(new Card(i, Suits.HEARTS));
+                newDeck.add(new Card(i, Suits.SPADES));
             }
         }
-        for(int i=51;i>-1;i--){
+        for(int i=52;i>0;i--){
             deck.add(newDeck.remove(rand.nextInt(i)));
         }
     }
