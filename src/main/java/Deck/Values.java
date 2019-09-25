@@ -1,5 +1,5 @@
 package Deck;
 
 public enum Values{
-    Two, Three, Four, Five, Six, Seven, Eight, Nine, Jack, Queen, King, Ace;
+    TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, JACK, QUEEN, KING, ACE
 }
