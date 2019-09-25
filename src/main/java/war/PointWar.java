@@ -5,10 +5,11 @@ import Deck.Hand;
 public class PointWar implements War{
     private Hand player1, player2;
 
-    public void set(){
-
+    public boolean playGame(){
+        return false;
     }
-    public boolean play(){
+
+    public void setHands() {
 
     }
 }
