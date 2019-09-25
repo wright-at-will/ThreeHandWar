@@ -27,4 +27,6 @@ public class Hand {
     public String toString(){
         return hand.toString();
     }
+
+    public int getSize() { return hand.size(); }
 }
