@@ -9,7 +9,7 @@ public class Player {
 
     public Player(String name){
         this.name = name;
-        this.hand = new Hand();
+        hand = new Hand();
     }
 
     public Card playCard(){
@@ -25,4 +25,14 @@ public class Player {
     public Hand getHand() {  return this.hand; }
 
     public void setHand(Hand hand) { this.hand = hand;}
+
+    public void showHand(){
+        System.out.println(name+" has this hand:");
+        hand.printHand();
+        System.out.println();
+    }
+
+    public Card peek(){
+        return hand.peek();
+    }
 }

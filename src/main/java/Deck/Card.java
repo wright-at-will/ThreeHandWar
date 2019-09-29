@@ -20,12 +20,12 @@ public class Card {
         return value.compareTo(card.value);
     }
 
-    public Values getValue(){
-        return value;
+    public String getValue(){
+        return ""+value;
     }
 
-    public Suits getSuit(){
-        return suit;
+    public String getSuit(){
+        return ""+suit;
     }
 
     private void setValue(int value){
@@ -55,15 +55,18 @@ public class Card {
                 this.value = Values.NINE;
                 break;
             case 10:
-                this.value = Values.JACK;
+                this.value = Values.TEN;
                 break;
             case 11:
-                this.value = Values.QUEEN;
+                this.value = Values.JACK;
                 break;
             case 12:
-                this.value = Values.KING;
+                this.value = Values.QUEEN;
                 break;
             case 13:
+                this.value = Values.KING;
+                break;
+            case 14:
                 this.value = Values.ACE;
                 break;
         }

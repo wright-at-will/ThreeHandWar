@@ -1,6 +1,5 @@
 package war;
 
 public interface War {
-    boolean playGame();
-    void setHands();
+    void playGame(String[] playerNames);
 }

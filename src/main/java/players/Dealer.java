@@ -1,19 +1,15 @@
 package players;
 
-import Deck.Deck;
+import Deck.Card;
 
-public class Dealer {
-    Deck deck;
+import java.util.ArrayList;
 
-    public Dealer(){
-        deck = new Deck();
-    }
-
-    public void setDeck(){
-        deck = new Deck();
-    }
-
-    public void giveCard(Player player){
-        player.addCard(deck.getTopCard());
-    }
+public interface Dealer {
+    //Dealer should be injected with the type of battle that it needs. Or the battle class should be polymorphic and just accept everything
+    void deal();
+    void addPoints(Player player, ArrayList<Card>cards);
+    Player playRound();
+    String playGame();
+    void showHands();
+    void shuffle();
 }
