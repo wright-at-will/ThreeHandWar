@@ -6,25 +6,31 @@ import Deck.Card;
 import Deck.Suits;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 
 //Implements creating a game with only enough cards for one battle
 public class BattleDealer extends Dealer{
 
-    //Deck deck;
-
-    //public Player player1, player2;
 
     public BattleDealer(String name1, String name2){
         super(new String[]{name1,name2});
     }
 
+    public BattleDealer(ArrayList<Player> players){
+        super(players);
+    }
+
     @Override
     public String playGame(){
+        ArrayList<Card> cards = new ArrayList<>();
+
+        System.out.println("Doing Battle");
         Player player = fight();
+        for(Player players: playerList)
+            cards.add(players.playCard());
         if(player == null)
             return "TIE GAME";
+        addPoints(player, cards);
         String name = player.getName();
         return name + " wins!";
     }

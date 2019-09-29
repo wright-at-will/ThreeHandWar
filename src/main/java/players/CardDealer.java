@@ -8,14 +8,14 @@ import java.util.ArrayList;
 
 public class CardDealer extends Dealer{
 
-    public CardDealer(String[] playerNames) {
-        super(playerNames);
+    public CardDealer(ArrayList<Player> players) {
+        super(players);
     }
 
     @Override
     public void addPoints(Player winner, ArrayList<Card> points) {
         System.out.println(winner.getName()+" wins the round");
-        winner.addPoints(points.size());
+        winner.addPoints(points);
         showPoints();
     }
 }

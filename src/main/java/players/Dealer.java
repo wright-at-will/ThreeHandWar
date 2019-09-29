@@ -9,17 +9,14 @@ import java.util.ArrayList;
 public class Dealer {
     Deck deck;
     //private int[] playerPoints;
-    private ArrayList<Player> playerList;
+    protected ArrayList<Player> playerList;
 
     public Dealer(String[] playerNames) {
         deck = new Deck();
         playerList = new ArrayList<>();
         for(String name:playerNames){
-            playerList.add(new Player(name));
+            //playerList.add(new Player(name));
         }
-       // for (int i : playerPoints = new int[playerList.size()]) {
-       //     playerPoints[i] = 0;
-       // }
     }
 
     public Dealer(ArrayList<Player> playerList){

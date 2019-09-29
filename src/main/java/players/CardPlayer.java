@@ -3,10 +3,13 @@ package players;
 import Deck.Card;
 import Deck.Hand;
 
-public class CardPlayer {
+import java.util.ArrayList;
+
+public class CardPlayer extends Player{
     private String name;
     private Hand hand;
     private int score;
+
     public CardPlayer(String name){
         super(name);
         this.name = name;
@@ -14,25 +17,10 @@ public class CardPlayer {
         score = 0;
     }
 
-    public Card playCard(){
-        Card card = hand.playCard();
-        System.out.println(name + " plays " + card + " as up card");
-        return card;
+    public void addPoints(ArrayList<Card> points){
+        for(Card card: points)
+            addCard(card);
     }
-
-    public void addCard(Card card){
-        hand.addToHand(card);
-    }
-
-    public void addPoints(int points){
-        score += points;
-    }
-
-    public String getName() { return this.name; }
-
-    public Hand getHand() {  return this.hand; }
-
-    public void setHand(Hand hand) { this.hand = hand;}
 
     public void showHand() {
         System.out.println(name + " has this hand:");
@@ -40,19 +28,12 @@ public class CardPlayer {
         System.out.println();
     }
 
-    public boolean hasHand(){
-        return hand.getSize() != 0;
-    }
-
-    public int getHandSize(){
-        return hand.getSize();
-    }
-
+    @Override
     public int getScore(){
-        return score;
+        return getHandSize();
     }
     @Override
     public String toString(){
-        return name + " " + score;
+        return name + " " + getHandSize();
     }
 }
