@@ -1,8 +1,6 @@
 package war;
 
 import Deck.Hand;
-import players.Dealer;
-import players.PointsDealer;
 
 //This is the war where all won cards are placed in a pile to the side
 public class PointWar implements War {

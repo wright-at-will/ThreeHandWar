@@ -1,12 +1,8 @@
 package Game;
 
-import Battle.Battle;
-import Deck.Deck;
+import players.BattleDealer;
+import players.CardDealer;
 import players.Dealer;
-import players.Player;
-import players.PointsDealer;
-import war.Annihilation;
-import war.War;
 
 public class StartGame {
 
@@ -20,15 +16,22 @@ public class StartGame {
         String[] names1 = {"Bob", "Sue"};
         String[] names2 = {"Bob","Mary","Sue"};
 
-        Dealer dealer1 = new PointsDealer(names1);
+        Dealer dealer1 = new CardDealer(names1);
         dealer1.shuffle();
         dealer1.deal();
-        dealer1.showHands();
-        dealer1.playRound();
-        //Dealer dealer2 = new PointsDealer(names2);
-        //dealer2.shuffle();
-        //dealer2.deal();
-        //dealer2.showHands();
+        System.out.println(dealer1.playGame());
+
+
+        Dealer dealer2 = new Dealer(names2);
+        dealer2.shuffle();
+        dealer2.deal();
+        System.out.println(dealer2.playGame());
+
+        System.out.println();
+        Dealer dealer3 = new BattleDealer(names1[0],names1[1]);
+        dealer3.shuffle();
+        dealer3.deal();
+        System.out.println(dealer3.playGame());
 
     }
 }

@@ -10,49 +10,29 @@ import java.util.Random;
 
 
 //Implements creating a game with only enough cards for one battle
-public class BattleDealer implements Dealer{
+public class BattleDealer extends Dealer{
 
-    Deck deck;
+    //Deck deck;
 
-    public Player player1, player2;
+    //public Player player1, player2;
 
-    public BattleDealer(Player player1, Player player2){
-        this.player1 = player1;
-        this.player2 = player2;
-        deck = new Deck();
+    public BattleDealer(String name1, String name2){
+        super(new String[]{name1,name2});
     }
 
     @Override
     public String playGame(){
-        return playRound().getName();
+        Player player = fight();
+        if(player == null)
+            return "TIE GAME";
+        String name = player.getName();
+        return name + " wins!";
     }
 
     @Override
     public void deal() {
-        player1.addCard(deck.getTopCard());
-        player2.addCard(deck.getTopCard());
+      dealCard();
     }
 
-    @Override
-    public void shuffle() {
-        deck.shuffleDeck();
-    }
-
-    @Override
-    public void addPoints(Player player, ArrayList<Card> points) {
-        //playerPoints[playerList.indexOf(player)] += points.size();
-    }
-
-    @Override
-    public Player playRound() {
-        return Battle.battle(player1,player2);
-    }
-
-    @Override
-    public void showHands() {
-        player1.showHand();
-        player2.showHand();
-
-    }
 
 }

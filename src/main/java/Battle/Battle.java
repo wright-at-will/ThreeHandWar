@@ -17,50 +17,49 @@ public class Battle {
     public Battle(){}
 
     public static Player battle(Player player1, Player player2){
-        System.out.println("Inside battle");
-        int compare = player1.peek().compareTo(player2.peek());
-        if(compare > 0){
-            return player1;
-        } else if(compare < 0){
-            return player2;
-        }
-        return null;
+        return pairWinner(player1,player2);
     }
 
     public static Player battle(Player player1, Player player2, Player player3){
-        if(player2.peek().compareTo(player1.peek()) > 0 && player2.peek().compareTo(player3.peek()) > 0)
-            return player2;
-        if(player1.peek().compareTo(player2.peek()) > 0 && player1.peek().compareTo(player3.peek()) > 0)
-            return player1;
-        if(player3.peek().compareTo(player1.peek()) > 0 && player3.peek().compareTo(player2.peek()) > 0)
-            return player3;
-        return null;
+        Player winner = battle(player1,player2);
+        if(winner != null){
+            winner = battle(winner, player3);
+        } else if(battle(player2,player3) == player3)
+            winner = player3;
+        return winner;
     }
 
     public static Player battle(ArrayList<Player> players){
-        Player winner = null;
-        for (int i = 0;i<players.size()-1;i++){
-            Player player = players.get(i);
-            for(int j = players.indexOf(player)+1; j<players.size()+1;j++){
-                try {
-                    int compare;
-                    compare = player.peek().compareTo(players.get(j).peek());
-                    if (compare == 0) {
-                        //if there is a tie, treat it as a loss so they don't set winner
-                        i = j;
-                        break;
-                    } else if(compare < 0){
-                        winner = players.get(j);
-                        i=j;
-                        break;
-                    }
-                } catch (Exception e){
-                    winner = player;
-                }
 
+
+
+        Player winner = players.get(0);
+        int i=1;
+        Boolean tie = false;
+        while(i<players.size()){
+            Player player = pairWinner(winner, players.get(i));
+            if(player == null){
+                tie = true;
+            }else if(player != winner) {
+                winner = player;
+                tie = false;
             }
+            i++;
         }
+        if(tie)
+            return null;
         return winner;
+    }
+
+    private static Player pairWinner(Player player1, Player player2){
+        int comparison = player1.peek().compareTo(player2.peek());
+        if(comparison > 0){
+            return player1;
+        } else if(comparison < 0){
+            return player2;
+        } else
+            return null;
+
     }
 
 }
